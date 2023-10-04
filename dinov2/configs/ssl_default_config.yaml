@@ -1,5 +1,5 @@
 MODEL:
-  WEIGHTS: ''
+  WEIGHTS: '' #'/home/ubuntu/model_weights/dinov2_vitg14_pretrain.pth' # add weights for DinoV2 here!
 compute_precision:
   grad_scaler: true
   teacher:
@@ -60,8 +60,8 @@ ibot:
   head_hidden_dim: 2048
 train:
   batch_size_per_gpu: 64
-  dataset_path: ImageNet:split=TRAIN
-  output_dir: .
+  dataset_path: ImageNet:split=TRAIN:root=/home/ubuntu/example_image/one_test_image:extra=/home/ubuntu/example_image/one_test_image #to change once I have an example, issue, this form is relevant, because split(':') is used, now try ImageNet22k instead of ImageNet:split=TRAIN
+  output_dir: . # change to something reasonable
   saveckp_freq: 20
   seed: 0
   num_workers: 10
@@ -69,12 +69,12 @@ train:
   cache_dataset: true
   centering: "centering" # or "sinkhorn_knopp"
 student:
-  arch: vit_large
+  arch: vit_large 
   patch_size: 16
   drop_path_rate: 0.3
   layerscale: 1.0e-05
   drop_path_uniform: true
-  pretrained_weights: ''
+  pretrained_weights: '' # what to put here?
   ffn_layer: "mlp"
   block_chunks: 0
   qkv_bias: true

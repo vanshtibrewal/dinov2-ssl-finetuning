@@ -1,7 +1,8 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 #
-# This source code is licensed under the Apache License, Version 2.0
-# found in the LICENSE file in the root directory of this source tree.
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
 
 import logging
 from enum import Enum
@@ -42,6 +43,7 @@ def _make_sample_transform(image_transform: Optional[Callable] = None, target_tr
 
 
 def _parse_dataset_str(dataset_str: str):
+    # Bene: this has to be changed, as only imagenet is supported here
     tokens = dataset_str.split(":")
 
     name = tokens[0]
@@ -58,6 +60,8 @@ def _parse_dataset_str(dataset_str: str):
             kwargs["split"] = ImageNet.Split[kwargs["split"]]
     elif name == "ImageNet22k":
         class_ = ImageNet22k
+    #elif name == "CustomDataset":
+        #class_ = CustomDataset
     else:
         raise ValueError(f'Unsupported dataset "{name}"')
 
@@ -86,7 +90,8 @@ def make_dataset(
     class_, kwargs = _parse_dataset_str(dataset_str)
     dataset = class_(transform=transform, target_transform=target_transform, **kwargs)
 
-    logger.info(f"# of dataset samples: {len(dataset):,d}")
+    # commented out by Bene
+    #logger.info(f"# of dataset samples: {len(dataset):,d}")
 
     # Aggregated datasets do not expose (yet) these attributes, so add them.
     if not hasattr(dataset, "transform"):

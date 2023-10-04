@@ -1,7 +1,15 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 #
-# This source code is licensed under the Apache License, Version 2.0
-# found in the LICENSE file in the root directory of this source tree.
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import sys
+import os
+
+# Add the root directory of the project to sys.path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.insert(0, project_root)
 
 import argparse
 import logging
@@ -29,7 +37,7 @@ logger = logging.getLogger("dinov2")
 
 def get_args_parser(add_help: bool = True):
     parser = argparse.ArgumentParser("DINOv2 training", add_help=add_help)
-    parser.add_argument("--config-file", default="", metavar="FILE", help="path to config file")
+    parser.add_argument("--config-file", default="/home/ubuntu/dinov2/dinov2/dinov2/configs/train/vitl14.yaml", metavar="FILE", help="path to config file")
     parser.add_argument(
         "--no-resume",
         action="store_true",
@@ -131,7 +139,7 @@ def do_test(cfg, model, iteration):
         torch.save({"teacher": new_state_dict}, teacher_ckp_path)
 
 
-def do_train(cfg, model, resume=False):
+def do_train(cfg, model, resume=False): # change resume to true?
     model.train()
     inputs_dtype = torch.half
     fp16_scaler = model.fp16_scaler  # for mixed precision training
