@@ -218,6 +218,7 @@ def do_train(cfg, model, resume=False): # change resume to true?
         collate_fn=collate_fn,
     )
 
+
     # training loop
 
     iteration = start_iter
