@@ -99,7 +99,7 @@ def make_dataset(
         setattr(dataset, "transform", transform)
     if not hasattr(dataset, "target_transform"):
         setattr(dataset, "target_transform", target_transform)
-
+    
     return dataset
 
 
@@ -210,6 +210,7 @@ def make_data_loader(
     )
 
     logger.info("using PyTorch data loader")
+
     data_loader = torch.utils.data.DataLoader(
         dataset,
         sampler=sampler,
@@ -220,6 +221,8 @@ def make_data_loader(
         persistent_workers=persistent_workers,
         collate_fn=collate_fn,
     )
+    #for batch in data_loader:
+    #    print(batch)
 
     try:
         logger.info(f"# of batches: {len(data_loader):,d}")
