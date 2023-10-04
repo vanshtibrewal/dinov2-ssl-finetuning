@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 class CustomImageDataset(Dataset):
     def __init__(
             self,
+            split,
             root: str,
             extra: str,
             transform=None,
@@ -18,6 +19,7 @@ class CustomImageDataset(Dataset):
         self.img_dir = root
         self.transform = transform
         self.target_transform = target_transform
+        self.split = split
 
         # Aufteilen der Daten in Trainings- und Testsets
         self.train_data, self.test_data = train_test_split(

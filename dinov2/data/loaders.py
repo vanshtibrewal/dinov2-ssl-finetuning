@@ -12,7 +12,7 @@ import torch
 from torch.utils.data import Sampler
 
 from .datasets import ImageNet, ImageNet22k
-from datasets.CustomImageDataset import CustomImageDataset
+from .datasets.CustomImageDataset import CustomImageDataset
 from .samplers import EpochSampler, InfiniteSampler, ShardedInfiniteSampler
 
 
