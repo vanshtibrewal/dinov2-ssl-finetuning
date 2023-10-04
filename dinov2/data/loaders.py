@@ -11,7 +11,8 @@ from typing import Any, Callable, List, Optional, TypeVar
 import torch
 from torch.utils.data import Sampler
 
-from .datasets import ImageNet, ImageNet22k, CustomImageDataset
+from .datasets import ImageNet, ImageNet22k
+from datasets.CustomImageDataset import CustomImageDataset
 from .samplers import EpochSampler, InfiniteSampler, ShardedInfiniteSampler
 
 
