@@ -91,7 +91,7 @@ def make_dataset(
     dataset = class_(transform=transform, target_transform=target_transform, **kwargs)
 
     # commented out by Bene
-    #logger.info(f"# of dataset samples: {len(dataset):,d}")
+    logger.info(f"# of dataset samples: {len(dataset):,d}")
 
     # Aggregated datasets do not expose (yet) these attributes, so add them.
     if not hasattr(dataset, "transform"):
