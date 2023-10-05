@@ -27,6 +27,29 @@ except ImportError:
 
 logger = logging.getLogger("dinov2")
 
+import math
+import torch.nn.functional as nnf
+
+def interpolate_pos_encoding(x, w, h):
+    N = x.shape[1] - 1
+    dim = x.shape[-1]
+    w0 = w / int(math.sqrt(N))
+    h0 = h / int(math.sqrt(N))
+
+    # Interpolate the position embeddings without changing the first row (class token)
+    patch_pos_embed = nnf.interpolate(
+        x[:, 1:].reshape(1, int(math.sqrt(N)), int(math.sqrt(N)), dim).permute(0, 3, 1, 2),
+        scale_factor=(w0, h0),
+        mode="bicubic",
+    )
+
+    #assert int(w0) == patch_pos_embed.shape[-2]
+    #assert int(h0) == patch_pos_embed.shape[-1]
+    patch_pos_embed = patch_pos_embed.permute(0, 2, 3, 1).view(1, -1, dim)
+
+    # Concatenate the class token with the interpolated position embeddings
+    return torch.cat((x[:, :1], patch_pos_embed), dim=1)
+
 
 class SSLMetaArch(nn.Module):
     def __init__(self, cfg):
@@ -46,6 +69,8 @@ class SSLMetaArch(nn.Module):
             chkpt = torch.load(cfg.student.pretrained_weights)
             logger.info(f"OPTIONS -- pretrained weights: loading from {cfg.student.pretrained_weights}")
             #student_backbone.load_state_dict(chkpt["model"], strict=False) old version, changed by Bene
+            chkpt_2 = interpolate_pos_encoding(chkpt['pos_embed'], self.cfg['crops']['global_crops_size']/self.cfg['student']['patch_size'], self.cfg['crops']['global_crops_size']/self.cfg['student']['patch_size'])
+            chkpt['pos_embed'] = chkpt_2
             student_backbone.load_state_dict(chkpt, strict=False)
 
         self.embed_dim = embed_dim
