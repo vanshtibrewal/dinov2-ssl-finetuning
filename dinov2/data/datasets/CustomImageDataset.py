@@ -75,8 +75,8 @@ class CustomImageDataset(Dataset):
         if self.transform:
             image_pil = self.transform(image_pil)
 
-        # safe images
-        save_all(image_pil, self.train_data.iloc[idx, 1])
+        # safe images, uncomment line below to save images
+        #save_all(image_pil, self.train_data.iloc[idx, 1])
 
         return image_pil, None
 
