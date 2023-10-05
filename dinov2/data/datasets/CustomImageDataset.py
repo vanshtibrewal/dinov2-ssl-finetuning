@@ -4,7 +4,39 @@ from torchvision.io import read_image
 from torch.utils.data import Dataset
 from torchvision import transforms
 from sklearn.model_selection import train_test_split
-from .decoders import TargetDecoder, ImageDataDecoder
+from .decoders import ImageDataDecoder
+import numpy as np
+from PIL import Image
+
+def save_image(tensor, name1, name2):
+    # Convert the tensor to a NumPy array
+    numpy_array = tensor.cpu().numpy()
+    
+    # Convert to uint8 and scale to [0, 255]
+    numpy_array = (numpy_array * 255).astype(np.uint8)
+    
+    # Create an image from the NumPy array
+    image = Image.fromarray(numpy_array.transpose(1, 2, 0))  # Convert to HWC format
+    
+    # Concatenate name1 and name2 to form the file name
+    file_name = f'{name1}_{name2}.png'
+    
+    # Specify the save path with the concatenated file name
+    save_path = f'/home/ubuntu/example_image/augmented_images/{file_name}'
+    
+    # Save the image as a PNG file
+    image.save(save_path)
+
+def save_all(image_pil, name1):
+    # save both global crops
+    save_image(image_pil['global_crops'][0], name1, 'global_crop1')
+    save_image(image_pil['global_crops'][1], name1, 'global_crop2')
+
+    #save local crops
+    local_crops = image_pil['local_crops']
+    for i, image in enumerate(local_crops):
+        save_image(image, name1, 'local_crop'+str(i))
+
 
 class CustomImageDataset(Dataset):
     def __init__(
@@ -43,6 +75,9 @@ class CustomImageDataset(Dataset):
         if self.transform:
             image_pil = self.transform(image_pil)
 
+        # safe images
+        save_all(image_pil, self.train_data.iloc[idx, 1])
+
         return image_pil, None
 
     def get_test_item(self, idx):
@@ -52,5 +87,5 @@ class CustomImageDataset(Dataset):
         if self.transform:
             image_pil = self.transform(image_pil)
         return image_pil
-
+    
     
