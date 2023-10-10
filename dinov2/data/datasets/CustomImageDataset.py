@@ -10,13 +10,13 @@ from PIL import Image
 
 def save_image(tensor, name1, name2):
     # Convert the tensor to a NumPy array
-    numpy_array = tensor.cpu().numpy()
+    #numpy_array = tensor.cpu().numpy()
     
     # Convert to uint8 and scale to [0, 255]
-    numpy_array = (numpy_array * 255).astype(np.uint8)
+    #numpy_array = numpy_array
     
     # Create an image from the NumPy array
-    image = Image.fromarray(numpy_array.transpose(1, 2, 0))  # Convert to HWC format
+    #image = Image.fromarray(numpy_array.transpose(1, 2, 0))  # Convert to HWC format
     
     # Concatenate name1 and name2 to form the file name
     file_name = f'{name1}_{name2}.png'
@@ -25,7 +25,9 @@ def save_image(tensor, name1, name2):
     save_path = f'/home/ubuntu/example_image/augmented_images/{file_name}'
     
     # Save the image as a PNG file
-    image.save(save_path)
+    #image.save(save_path)
+    # to make it work, comment out normalization in augmentations
+    tensor.save(save_path)
 
 def save_all(image_pil, name1):
     # save both global crops
