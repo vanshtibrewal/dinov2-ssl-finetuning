@@ -60,7 +60,7 @@ ibot:
   head_hidden_dim: 2048
 train:
   batch_size_per_gpu: 1 # original 64
-  dataset_path: CustomImageDataset:split=TRAIN:root=/home/ubuntu/example_image/tiling_previews_1024px_0mpp_2.0xdown_normal_heartcenter_munich:extra=/home/ubuntu/example_image/file_list.csv #to change once I have an example, issue, this form is relevant, because split(':') is used, now try ImageNet22k instead of ImageNet:split=TRAIN
+  dataset_path: CustomImageDataset:split=TRAIN:root=/home/ubuntu/example_image/test_patches:extra=/home/ubuntu/example_image/file_list.csv #to change once I have an example, issue, this form is relevant, because split(':') is used, now try ImageNet22k instead of ImageNet:split=TRAIN
   output_dir: . # change to something reasonable
   saveckp_freq: 20
   seed: 0
