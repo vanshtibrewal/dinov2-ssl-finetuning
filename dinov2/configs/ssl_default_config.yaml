@@ -65,9 +65,9 @@ train:
   saveckp_freq: 20
   seed: 0
   num_workers: 10
-  OFFICIAL_EPOCH_LENGTH: 1250
+  OFFICIAL_EPOCH_LENGTH: 1250 #change to change maximal number of runs = this * optim.epochs
   cache_dataset: true
-  centering: "centering" # or "sinkhorn_knopp"
+  centering: "sinkhorn_knopp" # or "sinkhorn_knopp" or "centering"
 student:
   arch: vit_small # e.g. vit_large or vit_small
   patch_size: 14 # important to use the checkpoints!
@@ -112,4 +112,4 @@ crops:
   global_crops_size: 224 #original 224 -> 518 necessary for checkpoints
   local_crops_size: 98 #original 96 -> 196 to also increase the value by a similar factor and divideable by 14
 evaluation:
-  eval_period_iterations: 12500
+  eval_period_iterations: 10 # original 12500, what better
