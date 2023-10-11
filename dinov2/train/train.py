@@ -58,7 +58,7 @@ For python-based LazyConfig, use "path.key=value".
     parser.add_argument(
         "--output-dir",
         "--output_dir",
-        default="",
+        default="/home/ubuntu/dino_train_res",
         type=str,
         help="Output directory to save logs and checkpoints",
     )
