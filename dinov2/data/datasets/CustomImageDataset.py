@@ -57,16 +57,18 @@ class CustomImageDataset(Dataset):
         self.split = split
 
         # split into train and test
-        self.train_data, self.test_data = train_test_split(
-            self.img_labels, test_size=test_size, random_state=random_state)
+        #self.train_data, self.test_data = train_test_split(
+        #    self.img_labels, test_size=test_size, random_state=random_state)
 
     def __len__(self):
-        return len(self.train_data) 
+        return len(self.img_labels) 
+        #return len(self.train_data) 
 
     def __getitem__(self, idx):
         # read image
         try:
-            img_path = os.path.join(self.img_dir, self.train_data.iloc[idx, 0])
+            #img_path = os.path.join(self.img_dir, self.train_data.iloc[idx, 0])
+            img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
             with open(img_path, mode="rb") as f:
                 image_pil = f.read()
             #image = read_image(img_path)
