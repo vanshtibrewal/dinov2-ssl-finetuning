@@ -282,7 +282,8 @@ def do_train(cfg, model, resume=False): # change resume to true?
         if math.isnan(sum(loss_dict_reduced.values())):
             logger.info("NaN detected")
             raise AssertionError
-        losses_reduced = sum(loss for loss in loss_dict_reduced.values())
+        #losses_reduced = sum(loss for loss in loss_dict_reduced.values()) # removed the keleo regularizer, because it it inf
+        losses_reduced = sum(loss for key, loss in loss_dict_reduced.items() if key != 'koleo_loss')
 
         metric_logger.update(lr=lr)
         metric_logger.update(wd=wd)
