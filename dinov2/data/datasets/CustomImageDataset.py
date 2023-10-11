@@ -3,10 +3,10 @@ import pandas as pd
 from torchvision.io import read_image
 from torch.utils.data import Dataset
 from torchvision import transforms
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split
 from .decoders import ImageDataDecoder
-import numpy as np
-from PIL import Image
+#import numpy as np
+#from PIL import Image
 
 def save_image(tensor, name1, name2):
     # Convert the tensor to a NumPy array
