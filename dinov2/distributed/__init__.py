@@ -157,8 +157,8 @@ class _TorchDistributedEnvironment:
         self.local_rank = -1
         self.local_world_size = -1
 
-        if _is_slurm_job_process():
-            return self._set_from_slurm_env()
+        #if _is_slurm_job_process():
+            #return self._set_from_slurm_env()
 
         env_vars = _collect_env_vars()
         if not env_vars:
@@ -179,6 +179,8 @@ class _TorchDistributedEnvironment:
 
     # Slurm job created with sbatch, submitit, etc...
     def _set_from_slurm_env(self):
+        #for key, value in os.environ.items():
+        #    print(f"{key}: {value}")
         # logger.info("Initialization from Slurm environment")
         job_id = int(os.environ["SLURM_JOB_ID"])
         node_count = int(os.environ["SLURM_JOB_NUM_NODES"])
