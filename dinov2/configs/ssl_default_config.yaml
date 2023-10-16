@@ -59,13 +59,13 @@ ibot:
   head_nlayers: 3
   head_hidden_dim: 2048
 train:
-  batch_size_per_gpu: 1 # original 64
-  dataset_path: CustomImageDataset:split=TRAIN:root=/home/ubuntu/example_image/test_patches:extra=/home/ubuntu/example_image/file_list.csv #to change once I have an example, issue, this form is relevant, because split(':') is used, now try ImageNet22k instead of ImageNet:split=TRAIN
+  batch_size_per_gpu: 256 # original 64, used 256
+  dataset_path: CustomImageDataset:split=TRAIN:root=/lustre/groups/labs/marr/qscd01/datasets/NCT-CRC-HE-100K:extra=/home/aih/benedikt.roth/scripts/bild_pfade.csv #to change once I have an example, issue, this form is relevant, because split(':') is used, now try ImageNet22k instead of ImageNet:split=TRAIN
   output_dir: . # change to something reasonable
   saveckp_freq: 20
   seed: 0
-  num_workers: 10
-  OFFICIAL_EPOCH_LENGTH: 1250 #change to change maximal number of runs = this * optim.epochs
+  num_workers: 10 #original 10 -> the system proposes 4
+  OFFICIAL_EPOCH_LENGTH: 391 #change to change maximal number of runs = this * optim.epochs, original 1250 -> use 100.000/batch_size (for 256 -> 391)
   cache_dataset: true
   centering: "sinkhorn_knopp" # or "sinkhorn_knopp" or "centering"
 student:
@@ -74,7 +74,7 @@ student:
   drop_path_rate: 0.4
   layerscale: 1.0e-05
   drop_path_uniform: true
-  pretrained_weights: '/home/ubuntu/model_weights/dinov2_vits14_pretrain.pth' 
+  pretrained_weights: '/home/aih/benedikt.roth/model_weights/dinov2_vits14_pretrain.pth' 
   ffn_layer: "swiglufused"
   block_chunks: 0
   qkv_bias: true
@@ -87,7 +87,7 @@ teacher:
   teacher_temp: 0.07
   warmup_teacher_temp_epochs: 30
 optim:
-  epochs: 100
+  epochs: 10000
   weight_decay: 0.04
   weight_decay_end: 0.2
   base_lr: 2.0e-04  # learning rate for a batch size of 1024
@@ -112,4 +112,4 @@ crops:
   global_crops_size: 224 #original 224 -> 518 necessary for checkpoints
   local_crops_size: 98 #original 96 -> 196 to also increase the value by a similar factor and divideable by 14
 evaluation:
-  eval_period_iterations: 10 # original 12500, what better
+  eval_period_iterations: 100 # original 12500, what better

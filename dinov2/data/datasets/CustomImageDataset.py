@@ -68,7 +68,8 @@ class CustomImageDataset(Dataset):
         # read image
         try:
             #img_path = os.path.join(self.img_dir, self.train_data.iloc[idx, 0])
-            img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
+            #img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
+            img_path = self.img_labels.iloc[idx, 0]
             with open(img_path, mode="rb") as f:
                 image_pil = f.read()
             #image = read_image(img_path)
