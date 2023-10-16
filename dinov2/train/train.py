@@ -16,6 +16,8 @@ import logging
 import math
 import os
 from functools import partial
+import wandb
+#os.environ["WANDB_MODE"]="offline"
 
 from fvcore.common.checkpoint import PeriodicCheckpointer
 import torch
@@ -37,7 +39,7 @@ logger = logging.getLogger("dinov2")
 
 def get_args_parser(add_help: bool = True):
     parser = argparse.ArgumentParser("DINOv2 training", add_help=add_help)
-    parser.add_argument("--config-file", default="/home/ubuntu/dinov2/dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file") #/home/ubuntu/dinov2/dinov2/configs/ssl_default_config.yaml or /home/ubuntu/dinov2/dinov2/configs/train/vitl14.yaml
+    parser.add_argument("--config-file", default="/home/aih/benedikt.roth/dinov2/dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file") #/home/ubuntu/dinov2/dinov2/configs/ssl_default_config.yaml or /home/ubuntu/dinov2/dinov2/configs/train/vitl14.yaml
     parser.add_argument(
         "--no-resume",
         action="store_true",
@@ -58,7 +60,7 @@ For python-based LazyConfig, use "path.key=value".
     parser.add_argument(
         "--output-dir",
         "--output_dir",
-        default="/home/ubuntu/dino_train_res",
+        default="/home/aih/benedikt.roth/dino_train_res",
         type=str,
         help="Output directory to save logs and checkpoints",
     )
@@ -204,8 +206,9 @@ def do_train(cfg, model, resume=False): # change resume to true?
         transform=data_transform,
         target_transform=lambda _: (),
     )
-    # sampler_type = SamplerType.INFINITE
-    sampler_type = SamplerType.SHARDED_INFINITE
+    sampler_type = SamplerType.INFINITE
+    #sampler_type = SamplerType.SHARDED_INFINITE
+    #sampler_type = SamplerType.EPOCH
     data_loader = make_data_loader(
         dataset=dataset,
         batch_size=cfg.train.batch_size_per_gpu,
@@ -217,6 +220,10 @@ def do_train(cfg, model, resume=False): # change resume to true?
         drop_last=True,
         collate_fn=collate_fn,
     )
+
+    run = wandb.init(
+    # Set the project where this run will be logged
+    project="dino_training")
 
 
     # training loop
@@ -285,6 +292,9 @@ def do_train(cfg, model, resume=False): # change resume to true?
         #losses_reduced = sum(loss for loss in loss_dict_reduced.values()) # removed the keleo regularizer, because it it inf
         losses_reduced = sum(loss for key, loss in loss_dict_reduced.items() if key != 'koleo_loss')
 
+        wandb.log({"lr": lr, "loss": losses_reduced, "wd": wd, "mom": mom, "last_layer_lr": last_layer_lr, "current_batch_size": current_batch_size
+        , "koleo_loss": loss_dict_reduced['koleo_loss'], "dino_local_crops_loss": loss_dict_reduced['dino_local_crops_loss']
+        , "dino_global_crops_loss": loss_dict_reduced['dino_global_crops_loss'], "ibot_loss": loss_dict_reduced['ibot_loss']})
         metric_logger.update(lr=lr)
         metric_logger.update(wd=wd)
         metric_logger.update(mom=mom)
