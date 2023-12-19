@@ -51,6 +51,47 @@ Tingying Peng
   </tbody>
 </table>
 
+## Pretrained models finetuned on TCGA
+
+<table style="margin: auto">
+  <thead>
+    <tr>
+      <th>model</th>
+      <th># of<br />params</th>
+      <th># of<br />iterations</th>
+      <th>TCGA<br />AUROC</th>
+      <th>CPTAC<br />AUROC</th>
+      <th>teacher backbone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ViT-S/14 distilled</td>
+      <td align="right">21 M</td>
+      <td align="right">30k</td>
+      <td align="right">89%</td>
+      <td align="right">85%</td>
+      <td><a href="">teacher weights</a></td>
+    </tr>
+    <tr>
+      <td>ViT-S/14 distilled</td>
+      <td align="right">21 M</td>
+      <td align="right">40k</td>
+      <td align="right">86%</td>
+      <td align="right">89%</td>
+      <td><a href="">teacher weights</a></td>
+    </tr>
+    <tr>
+      <td>ViT-g/14</td>
+      <td align="right">1,100 M</td>
+      <td align="right">60k</td>
+      <td align="right">84%</td>
+      <td align="right">79%</td>
+      <td><a href="">teacher weights</a></td>
+    </tr>
+  </tbody>
+</table>
+
 ### Load pretrained model 
 
 
