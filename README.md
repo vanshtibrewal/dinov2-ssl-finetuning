@@ -1,5 +1,12 @@
-This is a slightly adapted version of the DINOv2 github repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
-For the finetuning, the datasets TCGA (with colorectal cancer (CRC) from the cohorts COAD and READ with annotations of microsatellite instability (MSI)) and NCT-CRC-100K were used. 
+This is a slightly adapted version of the DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
+
+For the finetuning process, we utilized histopathological data from two datasets:
+- **TCGA (The Cancer Genome Atlas):** Specifically, colorectal cancer (CRC) data from the cohorts COAD and READ were used. This dataset includes annotations of microsatellite instability (MSI).
+  - Original TCGA Dataset: [The Cancer Genome Atlas Pan-Cancer analysis project](https://doi.org/10.1038/ng.2764)
+
+- **NCT-CRC-100K:** This dataset consists of 100,000 histological images of human colorectal cancer and healthy tissue.
+  - Original NCT-CRC-100K Dataset: [100,000 histological images of human colorectal cancer and healthy tissue](https://doi.org/10.5281/zenodo.1214456)
+
 
 # DINOv2: finetuning
 
@@ -41,7 +48,7 @@ Tingying Peng
   </tbody>
 </table>
 
-### Pretrained backbones 
+### Load pretrained model 
 
 
 ```python
