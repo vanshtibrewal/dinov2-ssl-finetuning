@@ -5,9 +5,11 @@ from torch.utils.data import Dataset
 from torchvision import transforms
 #from sklearn.model_selection import train_test_split
 from .decoders import ImageDataDecoder
+import random
 #import numpy as np
 #from PIL import Image
 
+# these functions were just created to check how the augmented images/crops look like
 def save_image(tensor, name1, name2):
     # Convert the tensor to a NumPy array
     #numpy_array = tensor.cpu().numpy()
@@ -24,9 +26,7 @@ def save_image(tensor, name1, name2):
     # Specify the save path with the concatenated file name
     save_path = f'/home/ubuntu/example_image/augmented_images/{file_name}'
     
-    # Save the image as a PNG file
-    #image.save(save_path)
-    # to make it work, comment out normalization in augmentations
+    # Save the image
     tensor.save(save_path)
 
 def save_all(image_pil, name1):
@@ -65,23 +65,18 @@ class CustomImageDataset(Dataset):
         #return len(self.train_data) 
 
     def __getitem__(self, idx):
-        # read image
         try:
-            #img_path = os.path.join(self.img_dir, self.train_data.iloc[idx, 0])
-            #img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
             img_path = self.img_labels.iloc[idx, 0]
             with open(img_path, mode="rb") as f:
                 image_pil = f.read()
-            #image = read_image(img_path)
-            #image_pil = transforms.ToPILImage()(image)
             image_pil = ImageDataDecoder(image_pil).decode()
         except Exception as e:
-            raise RuntimeError(f"can not read image for sample {idx}") from e
+            # in case of error when reading image, just take a random different one
+            random_index = random.randint(0, len(self) - 1)
+            image = self.__getitem__(random_index)
+            return image, None
         if self.transform:
             image_pil = self.transform(image_pil)
-
-        # safe images, uncomment line below to save images
-        #save_all(image_pil, self.train_data.iloc[idx, 1])
 
         return image_pil, None
 
