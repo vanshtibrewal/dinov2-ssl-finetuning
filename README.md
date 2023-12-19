@@ -1,5 +1,5 @@
 This is a slightly adapted version of the DINOv2 github repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
-For the finetuning, the datasets TCGA and NCT-CRC-100K were used. 
+For the finetuning, the datasets TCGA (with colorectal cancer (CRC) from the cohorts COAD and READ with annotations of microsatellite instability (MSI)) and NCT-CRC-100K were used. 
 
 # DINOv2: finetuning
 
