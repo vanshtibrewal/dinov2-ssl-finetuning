@@ -170,6 +170,8 @@ If you want to use more than one GPU, it is important to change the sampler in t
 python dinov2/run/train/train.py
 ```
 
+Of course arguments can be passed with the function as well (see also the original DINOv2).
+
 ## Continue finetuning
 
 If you want to continue finetuning or use the DINO heads, the remaining weights can be found here:
@@ -229,6 +231,7 @@ If you want to continue finetuning or use the DINO heads, the remaining weights 
   </tbody>
 </table>
 
+To load these weights, it is enough to add the path to the config file under head_path.
 
 ## Citation
 
