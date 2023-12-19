@@ -7,6 +7,8 @@
 #   https://github.com/facebookresearch/dino/blob/master/vision_transformer.py
 #   https://github.com/rwightman/pytorch-image-models/tree/master/timm/layers/patch_embed.py
 
+# this file was changed, the changes are following the changes in the DINOv2 github for registers
+
 import logging
 import os
 from typing import Callable, List, Any, Tuple, Dict
