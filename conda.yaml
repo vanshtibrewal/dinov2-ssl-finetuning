@@ -1,3 +1,4 @@
+# sklearn was added
 name: dinov2
 channels:
   - defaults
