@@ -4,6 +4,8 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
+# this file was changed
+
 import logging
 from enum import Enum
 from typing import Any, Callable, List, Optional, TypeVar
@@ -44,7 +46,6 @@ def _make_sample_transform(image_transform: Optional[Callable] = None, target_tr
 
 
 def _parse_dataset_str(dataset_str: str):
-    # Bene: this has to be changed, as only imagenet is supported here
     tokens = dataset_str.split(":")
 
     name = tokens[0]
@@ -91,7 +92,6 @@ def make_dataset(
     class_, kwargs = _parse_dataset_str(dataset_str)
     dataset = class_(transform=transform, target_transform=target_transform, **kwargs)
 
-    # commented out by Bene
     logger.info(f"# of dataset samples: {len(dataset):,d}")
 
     # Aggregated datasets do not expose (yet) these attributes, so add them.
