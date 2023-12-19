@@ -46,6 +46,7 @@ Tingying Peng
 
 ```python
 import torch
+import torch.nn as nn
 
 DINO_PATH_FINETUNED_DOWNLOADED=''
 
