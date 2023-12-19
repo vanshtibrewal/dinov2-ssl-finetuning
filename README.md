@@ -164,4 +164,5 @@ If you use the original code or the adapted DINOv2 repository finetuned with his
   - [Original Paper](https://arxiv.org/abs/2304.07193)
   - [Original DINOv2 Repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2)
 
-
+- This Repository:
+  - [Paper]()
