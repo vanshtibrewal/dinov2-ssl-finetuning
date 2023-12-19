@@ -41,19 +41,38 @@ Tingying Peng
   </tbody>
 </table>
 
-### Pretrained backbones (via PyTorch Hub)
+### Pretrained backbones 
 
-Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install PyTorch (the only required dependency for loading the model). Installing PyTorch with CUDA support is strongly recommended.
-
-A corresponding [model card](MODEL_CARD.md) is included in the repository.
 
 ```python
 import torch
 
-dinov2_vits14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vits14')
-dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
-dinov2_vitl14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitl14')
-dinov2_vitg14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitg14')
+DINO_PATH_FINETUNED_DOWNLOADED=''
+
+def get_dino_finetuned_downloaded():
+    # load the original DINOv2 model with the correct architecture and parameters. The positional embedding is too large.
+    # load vits or vitg
+    model=torch.hub.load('facebookresearch/dinov2', 'dinov2_vits14')
+    #model=torch.hub.load('facebookresearch/dinov2', 'dinov2_vitg14')
+    # load finetuned weights
+    pretrained = torch.load(DINO_PATH_FINETUNED_DOWNLOADED, map_location=torch.device('cpu'))
+    # make correct state dict for loading
+    new_state_dict = {}
+    for key, value in pretrained['teacher'].items():
+        if 'dino_head' in key:
+            print('not used')
+        else:
+            new_key = key.replace('backbone.', '')
+            new_state_dict[new_key] = value
+    #change shape of pos_embed, shape depending on vits or vitg
+    pos_embed = nn.Parameter(torch.zeros(1, 257, 384))
+    #pos_embed = nn.Parameter(torch.zeros(1, 257, 1536))
+    model.pos_embed = pos_embed
+    # load state dict
+    model.load_state_dict(new_state_dict, strict=True)
+    return model
+
+model=get_dino_finetuned_downloaded()
 ```
 
 
