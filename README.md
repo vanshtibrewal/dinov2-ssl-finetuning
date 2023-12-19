@@ -1,4 +1,4 @@
-This is a slightly adapted version of the DINOv2 github repository (https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
+This is a slightly adapted version of the DINOv2 github repository [`Paper`](https://arxiv.org/abs/2304.07193)], which was used to finetune DINOv2 with histopathological data.
 
 # DINOv2: finetuning
 
