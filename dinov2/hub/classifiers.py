@@ -3,6 +3,8 @@
 # This source code is licensed under the Apache License, Version 2.0
 # found in the LICENSE file in the root directory of this source tree.
 
+# this file was changed, the changes are following the changes in the DINOv2 github for registers
+
 from enum import Enum
 from typing import Union
 
