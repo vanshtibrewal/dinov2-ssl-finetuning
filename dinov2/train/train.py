@@ -17,7 +17,7 @@ import math
 import os
 from functools import partial
 import wandb
-#os.environ["WANDB_MODE"]="offline"
+#os.environ["WANDB_MODE"]="offline" #use this so set wandb to offline mode
 
 from fvcore.common.checkpoint import PeriodicCheckpointer
 import torch
@@ -39,7 +39,7 @@ logger = logging.getLogger("dinov2")
 
 def get_args_parser(add_help: bool = True):
     parser = argparse.ArgumentParser("DINOv2 training", add_help=add_help)
-    parser.add_argument("--config-file", default="/home/aih/benedikt.roth/dinov2/dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file") #/home/ubuntu/dinov2/dinov2/configs/ssl_default_config.yaml or /home/ubuntu/dinov2/dinov2/configs/train/vitl14.yaml
+    parser.add_argument("--config-file", default="/home/aih/benedikt.roth/dinov2/dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file")
     parser.add_argument(
         "--no-resume",
         action="store_true",
@@ -60,7 +60,7 @@ For python-based LazyConfig, use "path.key=value".
     parser.add_argument(
         "--output-dir",
         "--output_dir",
-        default="/home/aih/benedikt.roth/dino_train_res",
+        default="",
         type=str,
         help="Output directory to save logs and checkpoints",
     )
@@ -131,6 +131,9 @@ def apply_optim_scheduler(optimizer, lr, wd, last_layer_lr):
 
 def do_test(cfg, model, iteration):
     new_state_dict = model.teacher.state_dict()
+    new_state_dict_student = model.student.state_dict()
+    state_dict_teacher_dino_head = model.teacher.dino_head.state_dict()
+    state_dict_student_dino_head = model.student.dino_head.state_dict()
 
     if distributed.is_main_process():
         iterstring = str(iteration)
@@ -139,6 +142,17 @@ def do_test(cfg, model, iteration):
         # save teacher checkpoint
         teacher_ckp_path = os.path.join(eval_dir, "teacher_checkpoint.pth")
         torch.save({"teacher": new_state_dict}, teacher_ckp_path)
+        # save student checkpoint
+        student_ckp_path = os.path.join(eval_dir, "student_checkpoint.pth")
+        torch.save({"student": new_state_dict_student}, student_ckp_path)
+
+        # Save state_dict_teacher_dino_head for the teacher model
+        teacher_dino_head_ckp_path = os.path.join(eval_dir, "teacher_dino_head_checkpoint.pth")
+        torch.save({"teacher_dino_head": state_dict_teacher_dino_head}, teacher_dino_head_ckp_path)
+
+        # Save state_dict_student_dino_head for the student model
+        student_dino_head_ckp_path = os.path.join(eval_dir, "student_dino_head_checkpoint.pth")
+        torch.save({"student_dino_head": state_dict_student_dino_head}, student_dino_head_ckp_path)
 
 
 def do_train(cfg, model, resume=False): # change resume to true?
@@ -161,7 +175,7 @@ def do_train(cfg, model, resume=False): # change resume to true?
     checkpointer = FSDPCheckpointer(model, cfg.train.output_dir, optimizer=optimizer, save_to_disk=True)
 
     start_iter = checkpointer.resume_or_load(cfg.MODEL.WEIGHTS, resume=resume).get("iteration", -1) + 1
-
+    #start_iter = 41000
     OFFICIAL_EPOCH_LENGTH = cfg.train.OFFICIAL_EPOCH_LENGTH
     max_iter = cfg.optim.epochs * OFFICIAL_EPOCH_LENGTH
 
@@ -206,6 +220,7 @@ def do_train(cfg, model, resume=False): # change resume to true?
         transform=data_transform,
         target_transform=lambda _: (),
     )
+    # for one GPU use this, for several switch to sampler_type = SamplerType.SHARDED_INFINITE
     sampler_type = SamplerType.INFINITE
     #sampler_type = SamplerType.SHARDED_INFINITE
     #sampler_type = SamplerType.EPOCH
@@ -227,7 +242,7 @@ def do_train(cfg, model, resume=False): # change resume to true?
 
 
     # training loop
-
+    # change this value manually, if continuing with earlier weights to keep the progress of the schedulers
     iteration = start_iter
 
     logger.info("Starting training from iteration {}".format(start_iter))
@@ -289,9 +304,10 @@ def do_train(cfg, model, resume=False): # change resume to true?
         if math.isnan(sum(loss_dict_reduced.values())):
             logger.info("NaN detected")
             raise AssertionError
-        #losses_reduced = sum(loss for loss in loss_dict_reduced.values()) # removed the keleo regularizer, because it it inf
+        #losses_reduced = sum(loss for loss in loss_dict_reduced.values()) # removed the keleo regularizer, because it is often inf
         losses_reduced = sum(loss for key, loss in loss_dict_reduced.items() if key != 'koleo_loss')
 
+        # wandb logging
         wandb.log({"lr": lr, "loss": losses_reduced, "wd": wd, "mom": mom, "last_layer_lr": last_layer_lr, "current_batch_size": current_batch_size
         , "koleo_loss": loss_dict_reduced['koleo_loss'], "dino_local_crops_loss": loss_dict_reduced['dino_local_crops_loss']
         , "dino_global_crops_loss": loss_dict_reduced['dino_global_crops_loss'], "ibot_loss": loss_dict_reduced['ibot_loss']})
