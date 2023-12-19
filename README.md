@@ -2,10 +2,10 @@ This is a slightly adapted version of the DINOv2 GitHub repository [`Paper`](htt
 
 For the finetuning process, we utilized histopathological data from two datasets:
 - **TCGA (The Cancer Genome Atlas):** Specifically, colorectal cancer (CRC) data from the cohorts COAD and READ were used. This dataset includes annotations of microsatellite instability (MSI).
-  - Original TCGA Dataset: [The Cancer Genome Atlas Pan-Cancer analysis project](https://doi.org/10.1038/ng.2764)
+  - TCGA Dataset: [The Cancer Genome Atlas Pan-Cancer analysis project](https://doi.org/10.1038/ng.2764)
 
 - **NCT-CRC-100K:** This dataset consists of 100,000 histological images of human colorectal cancer and healthy tissue.
-  - Original NCT-CRC-100K Dataset: [100,000 histological images of human colorectal cancer and healthy tissue](https://doi.org/10.5281/zenodo.1214456)
+  - NCT-CRC-100K Dataset: [100,000 histological images of human colorectal cancer and healthy tissue](https://doi.org/10.5281/zenodo.1214456)
 
 
 # DINOv2: finetuning
@@ -18,15 +18,16 @@ Carsten Marr,
 Tingying Peng
 
 
-## Pretrained models with histopathology Data
+## Pretrained models finetuned on NCT-CRC-100K
 
 <table style="margin: auto">
   <thead>
     <tr>
       <th>model</th>
       <th># of<br />params</th>
-      <th>ImageNet<br />k-NN</th>
-      <th>ImageNet<br />linear</th>
+      <th># of<br />iterations</th>
+      <th>CRC-VAL-HE-7<br />20-NN Balanced Accuracy</th>
+      <th>CRC-VAL-HE-7<br />linear Balanced Accuracy</th>
       <th>download</th>
     </tr>
   </thead>
@@ -34,16 +35,18 @@ Tingying Peng
     <tr>
       <td>ViT-S/14 distilled</td>
       <td align="right">21 M</td>
-      <td align="right">79.0%</td>
-      <td align="right">81.1%</td>
-      <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth">backbone only</a></td>
+      <td align="right">2k</td>
+      <td align="right">93.8%</td>
+      <td align="right">92.7%</td>
+      <td><a href="">teacher weights</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
       <td align="right">1,100 M</td>
-      <td align="right">83.5%</td>
-      <td align="right">86.5%</td>
-      <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vitg14/dinov2_vitg14_pretrain.pth">backbone only</a></td>
+      <td align="right">10k</td>
+      <td align="right">93.4%</td>
+      <td align="right">93.7%</td>
+      <td><a href="">teacher weights</a></td>
     </tr>
   </tbody>
 </table>
