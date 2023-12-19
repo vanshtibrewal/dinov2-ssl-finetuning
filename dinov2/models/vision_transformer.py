@@ -7,6 +7,8 @@
 #   https://github.com/facebookresearch/dino/blob/main/vision_transformer.py
 #   https://github.com/rwightman/pytorch-image-models/tree/master/timm/models/vision_transformer.py
 
+# this file was changed, the changes are following the changes in the DINOv2 github for registers
+
 from functools import partial
 import math
 import logging
