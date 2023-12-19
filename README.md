@@ -137,7 +137,24 @@ def get_dino_finetuned_downloaded():
 
 model=get_dino_finetuned_downloaded()
 ```
+## Installation
 
+This requires the same prerequisites as the original DINOv2 implementation.
+
+The training and evaluation code requires PyTorch 2.0 and xFormers 0.0.18 as well as a number of other 3rd party packages. Note that the code has only been tested with the specified versions and also expects a Linux environment. To setup all the required dependencies for training and evaluation, please follow the instructions below:
+
+conda (Recommended) - Clone the repository and then create and activate a dinov2 conda environment using the provided environment definition:
+
+```python
+conda env create -f conda.yaml
+conda activate dinov2
+```
+
+pip - Clone the repository and then use the provided requirements.txt to install the dependencies:
+
+```python
+pip install -r requirements.txt
+```
 
 ## Citation
 
