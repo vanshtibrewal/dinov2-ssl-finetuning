@@ -1,4 +1,5 @@
 This is a slightly adapted version of the DINOv2 github repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
+For the finetuning, the datasets TCGA and NCT-CRC-100K were used. 
 
 # DINOv2: finetuning
 
@@ -8,9 +9,6 @@ Sophia J. Wagner,
 Julia A. Schnabel,
 Carsten Marr,
 Tingying Peng
-
-[[`Paper`](https://arxiv.org/abs/2304.07193)] [[`Blog`](https://ai.facebook.com/blog/dino-v2-computer-vision-self-supervised-learning/)] [[`Demo`](https://dinov2.metademolab.com)] [[`BibTeX`](#citing-dinov2)]
-
 
 
 ## Pretrained models
@@ -73,15 +71,15 @@ dinov2_vitg14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitg14')
 ```
 
 
-## Citing DINOv2
+## Citation
 
-If you find this repository useful, please consider giving a star :star: and citation :t-rex::
+If you use this code or the adapted DINOv2 repository with histopathological data and finetuned with specific datasets, please cite the following:
 
-```
-@misc{oquab2023dinov2,
-  title={DINOv2: Learning Robust Visual Features without Supervision},
-  author={Oquab, Maxime and Darcet, Timothée and Moutakanni, Theo and Vo, Huy V. and Szafraniec, Marc and Khalidov, Vasil and Fernandez, Pierre and Haziza, Daniel and Massa, Francisco and El-Nouby, Alaaeldin and Howes, Russell and Huang, Po-Yao and Xu, Hu and Sharma, Vasu and Li, Shang-Wen and Galuba, Wojciech and Rabbat, Mike and Assran, Mido and Ballas, Nicolas and Synnaeve, Gabriel and Misra, Ishan and Jegou, Herve and Mairal, Julien and Labatut, Patrick and Joulin, Armand and Bojanowski, Piotr},
-  journal={arXiv:2304.07193},
-  year={2023}
-}
-```
+- DINOv2 Repository:
+  - [Original Paper](https://arxiv.org/abs/2304.07193)
+
+- TCGA Dataset:
+  - The Cancer Genome Atlas Research Network. (2013). The Cancer Genome Atlas Pan-Cancer analysis project. *Nature Genetics*, 45(10), 1113–1120. [DOI: 10.1038/ng.2764](https://doi.org/10.1038/ng.2764)
+
+- NCT-CRC-100K Dataset:
+  - Kather, J. N., Halama, N., & Marx, A. (2018). 100,000 histological images of human colorectal cancer and healthy tissue. Zenodo. [DOI: 10.5281/zenodo.1214456](https://doi.org/10.5281/zenodo.1214456)
