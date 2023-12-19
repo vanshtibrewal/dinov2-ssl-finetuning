@@ -164,7 +164,7 @@ Currently, the github repository is meant to run on one GPU only. It can simply 
 python dinov2/train/train.py
 ```
 
-If you want to use more than one GPU, it is important to change the sampler in train.py and to change the StateDictType in fsdp/__init__.py. Then the starting is don via
+If you want to use more than one GPU, it is important to change the sampler in train.py and to change the StateDictType in "fsdp/__init__.py". Then the starting is don via
 
 ```python
 python dinov2/run/train/train.py
