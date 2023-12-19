@@ -28,6 +28,7 @@ Tingying Peng
       <th># of<br />iterations</th>
       <th>CRC-VAL-HE-7<br />20-NN balanced acc</th>
       <th>CRC-VAL-HE-7<br />linear balanced acc</th>
+      <th>teacher backbone</th>
     </tr>
   </thead>
   <tbody>
