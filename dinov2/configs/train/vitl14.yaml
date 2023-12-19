@@ -1,3 +1,4 @@
+# this file was changed
 dino:
   head_n_prototypes: 131072
   head_bottleneck_dim: 384
