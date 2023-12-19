@@ -1,6 +1,6 @@
-# DINOv2: Learning Robust Visual Features without Supervision
+This is a slightly adapted version of the DINOv2 github repository, which was used to finetune DINOv2 with histopathological data.
 
-**[Meta AI Research, FAIR](https://ai.facebook.com/research/)**
+# DINOv2: finetuning
 
 Benedikt Roth,
 Valentin Koch,
