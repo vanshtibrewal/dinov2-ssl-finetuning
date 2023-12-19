@@ -77,6 +77,7 @@ If you use this code or the adapted DINOv2 repository with histopathological dat
 
 - DINOv2 Repository:
   - [Original Paper](https://arxiv.org/abs/2304.07193)
+  - [Original DINOv2 Repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2)
 
 - TCGA Dataset:
   - The Cancer Genome Atlas Research Network. (2013). The Cancer Genome Atlas Pan-Cancer analysis project. *Nature Genetics*, 45(10), 1113–1120. [DOI: 10.1038/ng.2764](https://doi.org/10.1038/ng.2764)
