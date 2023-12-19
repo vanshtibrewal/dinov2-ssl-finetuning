@@ -44,7 +44,7 @@ Tingying Peng
   </thead>
   <tbody>
     <tr>
-      <td>ViT-S/14 distilled</td>
+      <td>ViT-S/14</td>
       <td align="right">21 M</td>
       <td align="right">2k</td>
       <td align="right">93.8%</td>
@@ -77,7 +77,7 @@ Tingying Peng
   </thead>
   <tbody>
     <tr>
-      <td>ViT-S/14 distilled</td>
+      <td>ViT-S/14</td>
       <td align="right">21 M</td>
       <td align="right">30k</td>
       <td align="right">89%</td>
@@ -85,7 +85,7 @@ Tingying Peng
       <td><a href="">teacher weights</a></td>
     </tr>
     <tr>
-      <td>ViT-S/14 distilled</td>
+      <td>ViT-S/14</td>
       <td align="right">21 M</td>
       <td align="right">40k</td>
       <td align="right">86%</td>
@@ -103,7 +103,7 @@ Tingying Peng
   </tbody>
 </table>
 
-### Load pretrained model 
+## Load pretrained model 
 
 
 ```python
@@ -155,6 +155,67 @@ pip - Clone the repository and then use the provided requirements.txt to install
 ```python
 pip install -r requirements.txt
 ```
+
+
+## Continue finetuning
+
+If you want to continue finetuning or use the DINO heads, the remaining weights can be found here:
+
+<table style="margin: auto">
+  <thead>
+    <tr>
+      <th>model</th>
+      <th>dataset</th>
+      <th># of<br />iterations</th>
+      <th>student backbone</th>
+      <th>student DINO head</th>
+      <th>teacher DINO head</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ViT-S/14</td>
+      <td>NCT-CRC-100K</td>
+      <td align="right">2k</td>
+      <td><a href="">student backbone</a></td>
+      <td><a href="">student DINO head</a></td>
+      <td><a href="">teacher DINO head</a></td>
+    </tr>
+    <tr>
+      <td>ViT-g/14</td>
+      <td>NCT-CRC-100K</td>
+      <td align="right">10k</td>
+      <td><a href="">student backbone</a></td>
+      <td><a href="">student DINO head</a></td>
+      <td><a href="">teacher DINO head</a></td>
+    </tr>
+    <tr>
+      <td>ViT-S/14</td>
+      <td>TCGA</td>
+      <td align="right">30k</td>
+      <td><a href="">student backbone</a></td>
+      <td><a href="">student DINO head</a></td>
+      <td><a href="">teacher DINO head</a></td>
+    </tr>
+    <tr>
+      <td>ViT-S/14</td>
+      <td>TCGA</td>
+      <td align="right">40k</td>
+      <td><a href="">student backbone</a></td>
+      <td><a href="">student DINO head</a></td>
+      <td><a href="">teacher DINO head</a></td>
+    </tr>
+    <tr>
+      <td>ViT-g/14</td>
+      <td>TCGA</td>
+      <td align="right">60k</td>
+      <td><a href="">student backbone</a></td>
+      <td><a href="">student DINO head</a></td>
+      <td><a href="">teacher DINO head</a></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Citation
 
