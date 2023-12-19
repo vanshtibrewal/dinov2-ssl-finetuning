@@ -11,7 +11,7 @@ Carsten Marr,
 Tingying Peng
 
 
-## Pretrained models
+## Pretrained models with histopathology Data
 
 <table style="margin: auto">
   <thead>
@@ -30,20 +30,6 @@ Tingying Peng
       <td align="right">79.0%</td>
       <td align="right">81.1%</td>
       <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth">backbone only</a></td>
-    </tr>
-    <tr>
-      <td>ViT-B/14 distilled</td>
-      <td align="right">86 M</td>
-      <td align="right">82.1%</td>
-      <td align="right">84.5%</td>
-      <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vitb14/dinov2_vitb14_pretrain.pth">backbone only</a></td>
-    </tr>
-    <tr>
-      <td>ViT-L/14 distilled</td>
-      <td align="right">300 M</td>
-      <td align="right">83.5%</td>
-      <td align="right">86.3%</td>
-      <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth">backbone only</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
