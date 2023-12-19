@@ -95,6 +95,7 @@ class FSDPCheckpointer(Checkpointer):
             return
 
         data = {}
+        # change this line of code to switch between one GPU and several GPUs
         #with FSDP.state_dict_type(self.model, StateDictType.LOCAL_STATE_DICT):
         with FSDP.state_dict_type(self.model, StateDictType.FULL_STATE_DICT):
             data["model"] = self.model.state_dict()
