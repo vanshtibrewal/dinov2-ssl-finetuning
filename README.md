@@ -1,11 +1,22 @@
 This is a slightly adapted version of the DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
 
-For the finetuning process, we utilized histopathological data from two datasets:
+For the finetuning process, we utilized histopathological data from two primary datasets:
 - **TCGA (The Cancer Genome Atlas):** Specifically, colorectal cancer (CRC) data from the cohorts COAD and READ were used. This dataset includes annotations of microsatellite instability (MSI).
   - TCGA Dataset: [The Cancer Genome Atlas Pan-Cancer analysis project](https://doi.org/10.1038/ng.2764)
 
 - **NCT-CRC-100K:** This dataset consists of 100,000 histological images of human colorectal cancer and healthy tissue.
   - NCT-CRC-100K Dataset: [100,000 histological images of human colorectal cancer and healthy tissue](https://doi.org/10.5281/zenodo.1214456)
+
+For testing purposes, we incorporated two additional external datasets:
+- **CPTAC (Clinical Proteomic Tumor Analysis Consortium):** For more details, visit the [CPTAC Data Portal](https://cptac-data-portal.georgetown.edu/). (Accessed: 10.11.2023)
+  - CPTAC Dataset: [CPTAC Data Portal](https://cptac-data-portal.georgetown.edu/)
+
+- **CRC-VAL-HE-7K:** This dataset, similar to NCT-CRC-100K, was employed for testing purposes.
+  - CRC-VAL-HE-7K Dataset: [7180 histological images of human colorectal cancer and healthy tissue](https://doi.org/10.5281/zenodo.1214456)
+
+We used the following testing pipeline for TCGA and CPTAC:
+- **Testing Pipeline:** [HistoBistro](https://github.com/peng-lab/HistoBistro)
+
 
 
 # DINOv2: finetuning
@@ -26,8 +37,8 @@ Tingying Peng
       <th>model</th>
       <th># of<br />params</th>
       <th># of<br />iterations</th>
-      <th>CRC-VAL-HE-7<br />20-NN balanced acc</th>
-      <th>CRC-VAL-HE-7<br />linear balanced acc</th>
+      <th>CRC-VAL-HE-7K<br />20-NN balanced acc</th>
+      <th>CRC-VAL-HE-7K<br />linear balanced acc</th>
       <th>teacher backbone</th>
     </tr>
   </thead>
@@ -130,14 +141,10 @@ model=get_dino_finetuned_downloaded()
 
 ## Citation
 
-If you use this code or the adapted DINOv2 repository with histopathological data and finetuned with specific datasets, please cite the following:
+If you use the original code or the adapted DINOv2 repository finetuned with histopathological data, please cite the following:
 
 - DINOv2 Repository:
   - [Original Paper](https://arxiv.org/abs/2304.07193)
   - [Original DINOv2 Repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2)
 
-- TCGA Dataset:
-  - The Cancer Genome Atlas Research Network. (2013). The Cancer Genome Atlas Pan-Cancer analysis project. *Nature Genetics*, 45(10), 1113–1120. [DOI: 10.1038/ng.2764](https://doi.org/10.1038/ng.2764)
 
-- NCT-CRC-100K Dataset:
-  - Kather, J. N., Halama, N., & Marx, A. (2018). 100,000 histological images of human colorectal cancer and healthy tissue. Zenodo. [DOI: 10.5281/zenodo.1214456](https://doi.org/10.5281/zenodo.1214456)
