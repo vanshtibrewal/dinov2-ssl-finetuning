@@ -103,7 +103,7 @@ Tingying Peng
   </tbody>
 </table>
 
-## Load pretrained model 
+### Load pretrained model 
 
 
 ```python
@@ -156,6 +156,19 @@ pip - Clone the repository and then use the provided requirements.txt to install
 pip install -r requirements.txt
 ```
 
+## Use the pipeline
+
+Currently, the github repository is meant to run on one GPU only. It can simply be run by this line of code once all the hyperparameters are set in the dinov2/dinov2/configs/ssl_default_config.yaml:
+
+```python
+python dinov2/train/train.py
+```
+
+If you want to use more than one GPU, it is important to change the sampler in train.py and to change the StateDictType in fsdp/__init__.py. Then the starting is don via
+
+```python
+python dinov2/run/train/train.py
+```
 
 ## Continue finetuning
 
