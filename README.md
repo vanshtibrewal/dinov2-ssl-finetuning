@@ -26,9 +26,8 @@ Tingying Peng
       <th>model</th>
       <th># of<br />params</th>
       <th># of<br />iterations</th>
-      <th>CRC-VAL-HE-7<br />20-NN Balanced Accuracy</th>
-      <th>CRC-VAL-HE-7<br />linear Balanced Accuracy</th>
-      <th>download</th>
+      <th>CRC-VAL-HE-7<br />20-NN balanced acc</th>
+      <th>CRC-VAL-HE-7<br />linear balanced acc</th>
     </tr>
   </thead>
   <tbody>
