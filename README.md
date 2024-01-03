@@ -49,7 +49,7 @@ Tingying Peng
       <td align="right">2k</td>
       <td align="right">93.8%</td>
       <td align="right">92.7%</td>
-      <td><a href="">teacher weights</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_NCT_10k_training_1999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
@@ -57,7 +57,7 @@ Tingying Peng
       <td align="right">10k</td>
       <td align="right">93.4%</td>
       <td align="right">93.7%</td>
-      <td><a href="">teacher weights</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_NCT_training_9999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
   </tbody>
 </table>
@@ -82,7 +82,7 @@ Tingying Peng
       <td align="right">30k</td>
       <td align="right">89%</td>
       <td align="right">85%</td>
-      <td><a href="">teacher weights</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
     <tr>
       <td>ViT-S/14</td>
@@ -90,7 +90,7 @@ Tingying Peng
       <td align="right">40k</td>
       <td align="right">86%</td>
       <td align="right">89%</td>
-      <td><a href="">teacher weights</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
@@ -98,7 +98,7 @@ Tingying Peng
       <td align="right">60k</td>
       <td align="right">84%</td>
       <td align="right">79%</td>
-      <td><a href="">teacher weights</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_TCGA_training_59999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
   </tbody>
 </table>
@@ -192,41 +192,41 @@ If you want to continue finetuning or use the DINO heads, the remaining weights 
       <td>ViT-S/14</td>
       <td>NCT-CRC-100K</td>
       <td align="right">2k</td>
-      <td><a href="">student backbone</a></td>
-      <td><a href="">student DINO head</a></td>
-      <td><a href="">teacher DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_NCT_10k_training_1999_student_checkpoint.pth?download=1">student backbone</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_NCT_10k_training_1999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_NCT_10k_training_1999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
       <td>NCT-CRC-100K</td>
       <td align="right">10k</td>
-      <td><a href="">student backbone</a></td>
-      <td><a href="">student DINO head</a></td>
-      <td><a href="">teacher DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_NCT_training_9999_student_checkpoint.pth?download=1">student backbone</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_NCT_training_9999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_NCT_training_9999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
     <tr>
       <td>ViT-S/14</td>
       <td>TCGA</td>
       <td align="right">30k</td>
-      <td><a href="">student backbone</a></td>
-      <td><a href="">student DINO head</a></td>
-      <td><a href="">teacher DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_student_checkpoint.pth?download=1">student backbone</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
     <tr>
       <td>ViT-S/14</td>
       <td>TCGA</td>
       <td align="right">40k</td>
-      <td><a href="">student backbone</a></td>
-      <td><a href="">student DINO head</a></td>
-      <td><a href="">teacher DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_student_checkpoint.pth?download=1">student backbone</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
       <td>TCGA</td>
       <td align="right">60k</td>
-      <td><a href="">student backbone</a></td>
-      <td><a href="">student DINO head</a></td>
-      <td><a href="">teacher DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_TCGA_training_59999_student_checkpoint.pth?download=1">student backbone</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_TCGA_training_59999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
+      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vitg_TCGA_training_59999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
   </tbody>
 </table>
