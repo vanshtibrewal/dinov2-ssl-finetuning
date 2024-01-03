@@ -158,7 +158,8 @@ class _TorchDistributedEnvironment:
         self.world_size = -1
         self.local_rank = -1
         self.local_world_size = -1
-
+        
+        # commented out because it was only run on one GPU an led to fails
         #if _is_slurm_job_process():
             #return self._set_from_slurm_env()
 
