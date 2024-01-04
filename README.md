@@ -85,14 +85,6 @@ Tingying Peng
       <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
     </tr>
     <tr>
-      <td>ViT-S/14</td>
-      <td align="right">21 M</td>
-      <td align="right">40k</td>
-      <td align="right">86%</td>
-      <td align="right">89%</td>
-      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_teacher_checkpoint.pth?download=1">teacher weights</a></td>
-    </tr>
-    <tr>
       <td>ViT-g/14</td>
       <td align="right">1,100 M</td>
       <td align="right">60k</td>
@@ -212,14 +204,6 @@ If you want to continue finetuning or use the DINO heads, the remaining weights 
       <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_student_checkpoint.pth?download=1">student backbone</a></td>
       <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
       <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_29999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
-    </tr>
-    <tr>
-      <td>ViT-S/14</td>
-      <td>TCGA</td>
-      <td align="right">40k</td>
-      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_student_checkpoint.pth?download=1">student backbone</a></td>
-      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_student_dino_head_checkpoint.pth?download=1">student DINO head</a></td>
-      <td><a href="https://zenodo.org/records/10406135/files/dinov2_vits_TCGA_training_39999_teacher_dino_head_checkpoint.pth?download=1">teacher DINO head</a></td>
     </tr>
     <tr>
       <td>ViT-g/14</td>
