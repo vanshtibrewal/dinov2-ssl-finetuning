@@ -220,7 +220,7 @@ To load these weights, it is enough to add the path to the config file under hea
 
 ## Citation
 
-If you use the original code or the adapted DINOv2 repository finetuned with histopathological data, please cite the following:
+If you use the adapted DINOv2 repository finetuned with histopathological data, please cite the following:
 
 - DINOv2 Repository:
   - [Original Paper](https://arxiv.org/abs/2304.07193)
