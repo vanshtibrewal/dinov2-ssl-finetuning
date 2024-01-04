@@ -169,6 +169,7 @@ If you want to use more than one GPU, it is important to change the sampler in t
 ```python
 python torchrun --nproc_per_node=2 dinov2/dinov2/train/train.py
 ```
+nproc_per_node corresponds to the number of GPUs.
 
 Of course arguments can be passed with the function as well (see also the original DINOv2).
 
