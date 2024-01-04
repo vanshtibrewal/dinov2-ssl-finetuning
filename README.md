@@ -1,4 +1,4 @@
-This is a slightly adapted version of the DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
+This is a slightly adapted version of the original DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
 
 For the finetuning process, we utilized histopathological data from two primary datasets:
 - **TCGA (The Cancer Genome Atlas):** Specifically, colorectal cancer (CRC) data from the cohorts COAD and READ were used. This dataset includes annotations of microsatellite instability (MSI).
