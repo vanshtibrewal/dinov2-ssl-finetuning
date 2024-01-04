@@ -232,7 +232,7 @@ If you want to continue finetuning or use the DINO heads, the remaining weights 
   </tbody>
 </table>
 
-To load these weights, it is enough to add the path to the config file under head_path.
+To load these weights, it is enough to add the path to the config file under head_path. The path that has to be added is to a folder containing the weights. The weights have to be renamed after downloading them for the available code to work (e.g. student_dino_head_checkpoint.pth). More details can be found in the file /dinov2/dinov2/train/ssl_meta_arch.py.
 
 ## Citation
 
