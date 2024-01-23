@@ -227,4 +227,4 @@ If you use the adapted DINOv2 repository finetuned with histopathological data, 
   - [Original DINOv2 Repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2)
 
 - This Repository:
-  - [Paper]()
+  - [Paper](https://arxiv.org/abs/2401.04720#:~:text=We%20show%20that%20foundation%20models,feature%20extractors%20for%20computational%20pathology.)
