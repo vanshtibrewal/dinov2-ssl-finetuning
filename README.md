@@ -230,3 +230,14 @@ If you use the adapted DINOv2 repository finetuned with histopathological data, 
 
 - This Repository:
   - [Paper](https://arxiv.org/abs/2401.04720#:~:text=We%20show%20that%20foundation%20models,feature%20extractors%20for%20computational%20pathology.)
+  - BibTeX Citation:
+    ```
+    @misc{roth2024lowresource,
+      title={Low-resource finetuning of foundation models beats state-of-the-art in histopathology},
+      author={Benedikt Roth and Valentin Koch and Sophia J. Wagner and Julia A. Schnabel and Carsten Marr and Tingying Peng},
+      year={2024},
+      eprint={2401.04720},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+    }
+    ```
