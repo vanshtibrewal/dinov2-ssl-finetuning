@@ -1,3 +1,5 @@
+# Low-resource finetuning of foundation models beats state-of-the-art in histopathology
+
 This is a slightly adapted version of the original DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
 
 For the finetuning process, we utilized histopathological data from two primary datasets:
