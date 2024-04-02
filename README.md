@@ -1,6 +1,19 @@
 # Low-resource finetuning of foundation models beats state-of-the-art in histopathology
 
-This is a slightly adapted version of the original DINOv2 GitHub repository [`Paper`](https://arxiv.org/abs/2304.07193), which was used to finetune DINOv2 with histopathological data.
+This is the repository of  [Low-resource finetuning of foundation models beats state-of-the-art in histopathology](https://arxiv.org/abs/2401.04720) which was accepted at ISBI 2024.
+It is a slightly adapted version of the original [DINOv2](https://arxiv.org/abs/2304.07193), GitHub [repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2).
+## Finetuning can be compute efficient
+<img src="media/figure1.png" alt="Title" title="Finetuning works well" width="500" /> 
+We propose finetuning a DINOv2 ViT-S, which yields at least equal performance compared to CTransPath and RetCCL but in a fraction of domain specific training time. Performance is measured on three datasets: TCGA & CPTAC (WSI-level classification) and NCT-CRC (patch-level classification).
+
+## Loss and performance over time
+![](media/loss_curves.png "Title")
+
+Performance over time of finetuning a ViT-s with DINOv2: a) on NCT-CRC and evaluating on the external NCT-
+CRC testset on patch-level classification and b) on TCGA and testing on TCGA (5-fold cross-validation) and CPTAC (external
+testset) on WSI-level classification.
+
+## Data
 
 For the finetuning process, we utilized histopathological data from two primary datasets:
 - **TCGA (The Cancer Genome Atlas):** Specifically, colorectal cancer (CRC) data from the cohorts COAD and READ were used. This dataset includes annotations of microsatellite instability (MSI).
@@ -21,15 +34,8 @@ We used the following testing pipeline for TCGA and CPTAC:
 
 
 
-# DINOv2: finetuning
-
-Benedikt Roth,
-Valentin Koch,
-Sophia J. Wagner,
-Julia A. Schnabel,
-Carsten Marr,
-Tingying Peng
-
+# Model farm
+We make all models as well as heads used for training publicly available in the following.
 
 ## Pretrained models finetuned on NCT-CRC-100K
 
@@ -224,22 +230,15 @@ To load these weights, it is enough to add the path to the config file under hea
 
 ## Citation
 
-If you use the adapted DINOv2 repository finetuned with histopathological data, please cite the following:
+If you find our research helpful, please consider citing:
 
-- DINOv2 Repository:
-  - [Original Paper](https://arxiv.org/abs/2304.07193)
-  - [Original DINOv2 Repository](https://github.com/facebookresearch/dinov2/tree/main/dinov2)
-
-- This Repository:
-  - [Paper](https://arxiv.org/abs/2401.04720#:~:text=We%20show%20that%20foundation%20models,feature%20extractors%20for%20computational%20pathology.)
-  - BibTeX Citation:
-    ```
-    @misc{roth2024lowresource,
-      title={Low-resource finetuning of foundation models beats state-of-the-art in histopathology},
-      author={Benedikt Roth and Valentin Koch and Sophia J. Wagner and Julia A. Schnabel and Carsten Marr and Tingying Peng},
-      year={2024},
-      eprint={2401.04720},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-    }
-    ```
+```
+@misc{roth2024lowresource,
+  title={Low-resource finetuning of foundation models beats state-of-the-art in histopathology},
+  author={Benedikt Roth and Valentin Koch and Sophia J. Wagner and Julia A. Schnabel and Carsten Marr and Tingying Peng},
+  year={2024},
+  eprint={2401.04720},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}
+```
