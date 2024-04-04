@@ -164,7 +164,7 @@ Currently, the github repository is meant to run on one GPU only. It can simply 
 python dinov2/train/train.py --config-file dinov2/configs/ssl_default_config.yaml
 ```
 
-If you want to use more than one GPU, it is important to change the sampler in train.py to a sampler supporting sharding (e.g. SamplerType.SHARDED_INFINITE) and to change the StateDictType in fsdp/&#95;&#95;init&#95;&#95;.py. Then the starting is don via
+If you want to use more than one GPU, it is important to change the sampler in train.py to a sampler supporting sharding (e.g. SamplerType.SHARDED_INFINITE) and to change the StateDictType in fsdp/&#95;&#95;init&#95;&#95;.py. Then the starting is done via
 
 ```python
 torchrun --nproc_per_node=2 dinov2/dinov2/train/train.py --config-file dinov2/configs/ssl_default_config.yaml
