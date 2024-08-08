@@ -49,7 +49,7 @@ class DataAugmentationDINO(object):
                     global_crops_size, scale=global_crops_scale, interpolation=transforms.InterpolationMode.BICUBIC
                 ),
                 transforms.RandomHorizontalFlip(p=0.5),
-                transforms.RandomVerticalFlip(p=0.5),
+                # transforms.RandomVerticalFlip(p=0.5), likely not beneficial for this setting
             ]
         )
 
@@ -59,7 +59,7 @@ class DataAugmentationDINO(object):
                     local_crops_size, scale=local_crops_scale, interpolation=transforms.InterpolationMode.BICUBIC
                 ),
                 transforms.RandomHorizontalFlip(p=0.5),
-                transforms.RandomVerticalFlip(p=0.5), # added vertical flip for histopathological images
+                # transforms.RandomVerticalFlip(p=0.5), # added vertical flip for histopathological images # likely not beneficial for this setting
             ]
         )
 
