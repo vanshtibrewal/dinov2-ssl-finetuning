@@ -41,7 +41,8 @@ logger = logging.getLogger("dinov2")
 
 def get_args_parser(add_help: bool = True):
     parser = argparse.ArgumentParser("DINOv2 training", add_help=add_help)
-    parser.add_argument("--config-file", default="/home/aih/benedikt.roth/dinov2/dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file")
+    parser.add_argument("--config-file", default="./dinov2/configs/ssl_default_config.yaml", metavar="FILE", help="path to config file")
+    # ensure default config file path points to your default config
     parser.add_argument(
         "--no-resume",
         action="store_true",
